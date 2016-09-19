@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Mamuph/base.svg?branch=master)](https://travis-ci.org/Mamuph/base)
+
+
 MAMUPH FRAMEWORK
 ================
 

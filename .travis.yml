@@ -14,6 +14,6 @@ install:
   - composer install
 
 before_script:
-  - wget https://phar.phpunit.de/phpunit.phar test
+  - wget -O test/phpunit.phar https://phar.phpunit.de/phpunit.phar
 
 script: php test/phpunit.phar --configuration phpunit_mysql.xml

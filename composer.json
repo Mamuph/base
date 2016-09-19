@@ -1,0 +1,15 @@
+{
+  "name": "mamuph/core",
+  "description": "PHP-CLI framework",
+  "minimum-stability": "stable",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "Juan Lago",
+      "email": "mamuph@protonmail.com"
+    }
+  ],
+  "config": {
+    "vendor-dir": "src/Vendor"
+  }
+}

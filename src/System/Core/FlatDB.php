@@ -1,0 +1,117 @@
+<?php
+
+/**
+ * Abstract controller class.
+ *
+ * @package     Mamuph
+ * @category    FlatDB
+ * @author      Mamuph Team
+ * @copyright   (c) 2015-2016 Mamuph Team
+ */
+abstract class Core_FlatDB
+{
+
+    /**
+     * @var  FlatDB  Singleton instance container
+     */
+    protected static $_instance = array();
+
+    /**
+     * @var  array  list of drivers
+     */
+    protected $_driver = array();
+    
+
+    /**
+     * Get the singleton instance of this class and enable writing at shutdown.
+     *
+     *     $flatdb = FlatDB::instance();
+     *
+     * @param   string  $name   Instance name
+     * @return  FlatDB'
+     */
+    public static function instance($name = 'default')
+    {
+        if (empty(FlatDB::$_instance[$name]))
+        {
+            // Create a new instance
+            FlatDB::$_instance[$name] = new FlatDB;
+
+            // Close the file/connection at shutdown
+            register_shutdown_function(array(FlatDB::$_instance[$name], 'flush'));
+        }
+
+        return FlatDB::$_instance[$name];
+    }
+
+
+    /**
+     * Attaches a driver
+     *
+     *     $flatdb->attach($driver);
+     *
+     * @param   FlatDB_Driver   $driver     instance
+     * @return  FlatDB
+     */
+    public function attach(FlatDB_Driver $driver)
+    {
+
+        $this->_driver = $driver;
+
+        return $this;
+    }
+
+
+    /**
+     * Detaches a driver. The same driver object must be used.
+     *
+     *     $flatdb->detach($driver);
+     *
+     * @param   FlatDB_Driver  $driver instance
+     * @return  FlatDB
+     */
+    public function detach(FlatDB_Driver $driver)
+    {
+        // Remove the writer
+        unset($this->_driver);
+
+        return $this;
+    }
+
+
+    /**
+     * Read a data node by path
+     * 
+     * @param string    $path       Path (Optional)
+     * @param mixed     $default    Default value (Optional when path is used)
+     * @return mixed
+     */
+    public function read($path = null, $default = null)
+    {
+        return $path === null ? $this->_driver->data  : Arr::path($this->_driver->data, $path, $default);
+    }
+
+
+    /**
+     * Write into the memory a data node by path
+     *
+     * @param mixed     $data
+     */
+    public function write($data)
+    {
+        $this->_driver->data = $data;
+    }
+
+
+    /**
+     * Copy the memory writes into an external storage (file, apcu, database, etc)
+     *
+     * @return bool
+     */
+    public function flush()
+    {
+        return empty($this->_driver->data) ? false : $this->_driver->flush();
+    }
+
+}
+

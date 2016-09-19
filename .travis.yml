@@ -13,8 +13,4 @@ php:
 install:
   - composer install
 
-before_script:
-  - wget https://phar.phpunit.de/phpunit.phar
-  - chmod +x phpunit.phar
-
-script: ./phpunit.phar --configuration phpunit_mysql.xml
+script: phpunit --configuration phpunit.xml

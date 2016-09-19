@@ -1,5 +1,5 @@
 {
-  "name": "mamuph/core",
+  "name": "mamuph/base",
   "description": "PHP-CLI framework",
   "minimum-stability": "stable",
   "license": "BSD",

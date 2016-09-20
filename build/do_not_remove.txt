@@ -1,3 +1,0 @@
-Do not remove this file.
-
-It is used in order that git can keep filesystem structure

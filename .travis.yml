@@ -2,11 +2,18 @@ language: php
 
 dist: precise
 
+git:
+    submodules: false
+
 php:
   - '5.5'
   - '5.6'
   - '7.0'
   - hhvm
+
+before_install:
+    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+    - git submodule update --init --recursive
 
 install:
   - composer install

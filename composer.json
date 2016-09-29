@@ -14,8 +14,7 @@
   },
   "scripts": {
     "post-create-project-cmd": [
-      "@composer create-project mamuph/system src/System \"1.6\"",
-      "rm src/System/composer.json"
+      "@composer create-project mamuph/system src/System \"1.6\""
     ]
   }
 }

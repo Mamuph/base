@@ -8,3 +8,25 @@ MAMUPH FRAMEWORK
 --------------
 
 A PHP framework designed for develop console applications
+
+
+
+2. Installation
+---------------
+
+#### 2.1 Using Caverman
+
+        caverman new [project dir]
+        
+        
+#### 2.2 Using Composer
+
+        composer create-project mamuph/base [project dir]
+        
+        
+#### 2.3 Using GIT
+
+        git clone --recursive mamuph/base [project dir]
+        
+
+

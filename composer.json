@@ -11,7 +11,7 @@
   ],
   "config": {
     "vendor-dir": "src/Vendor"
-  }
+  },
   "scripts": {
     "post-create-project-cmd": "@composer create-project mamuph/system src/System \"v1.5\" && rm src/System/composer.json"
   }

@@ -11,6 +11,7 @@ A PHP framework designed for develop console applications
 
 
 
+
 2. Installation
 ---------------
 

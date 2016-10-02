@@ -52,10 +52,11 @@ define('VERSION', Version::get(
  *  Apprunner::TESTING
  *  Apprunner::PRODUCTION
  */
-if (!IS_PHAR)
-    Apprunner::$environment = Apprunner::DEVELOPMENT;
-else
+if (IS_PHAR)
     Apprunner::$environment = Apprunner::PRODUCTION;
+else
+    Apprunner::$environment = Apprunner::DEVELOPMENT;
+
 
 
 /**
@@ -99,7 +100,7 @@ Apprunner::modules(
 /**
  * Load PSR-4 Components (Like for example those installed using composer)
  */
-Apprunner::requires(VENDORPATH . 'autoload.php');
+if (File::exists(VENDORPATH . 'autoload.php', File::SCOPE_LOCAL)) Apprunner::includes(VENDORPATH . 'autoload.php');
 
 
 /**

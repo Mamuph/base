@@ -22,7 +22,7 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
     /**
      * Restore the argument values after each test
      */
-    function tearDown()
+    public function tearDown()
     {
         global $argv;
 
@@ -232,7 +232,7 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
 
         // Mock arguments
         $argv[1] = 'argument1';
-        $argv[2] = '--beta=argument2';
+        $argv[2] = '--beta-x=argument2';
 
         // Process arguments
         Params::process(
@@ -244,7 +244,7 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
                     ],
                 'beta'  =>
                     [
-                        'long_arg'      => 'beta',
+                        'long_arg'      => 'beta-x',
                         'accept_value'  => 'string',
                         'optional'      => false
                     ],

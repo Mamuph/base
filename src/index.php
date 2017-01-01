@@ -130,12 +130,6 @@ Hooks::instance();
 
 
 /**
- * Load default internal App configuration
- */
-Config::instance()->attach(new Config_FileReader(CONFIGPATH));
-
-
-/**
  * Set current path
  */
 chdir(getcwd());

@@ -56,12 +56,10 @@ class TestSystemFlatDB extends PHPUnit_Framework_TestCase
     public function test_write()
     {
         // Write using the serialization driver
-
         FlatDB::instance('serialize')->write(Arr::merge($this->test_data, ['driver' => 'serialize']));
         $this->assertNotEquals(false, FlatDB::instance('serialize')->flush());
 
         // Write using the JSON driver
-
         FlatDB::instance('json')->write(Arr::merge($this->test_data, ['driver' => 'json']));
         $this->assertNotEquals(false, FlatDB::instance('json')->flush());
 

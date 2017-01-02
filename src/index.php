@@ -126,7 +126,7 @@ spl_autoload_register(array('Apprunner', 'auto_load'));
 /**
  * Initialize hooks
  */
-Hooks::instance();
+Hook::instance();
 
 
 /**

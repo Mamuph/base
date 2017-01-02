@@ -126,7 +126,7 @@ if (File::exists(VENDORPATH . 'autoload.php', File::SCOPE_LOCAL)) Apprunner::inc
 /**
  * Send initialized notification
  */
-Hooks::instance()->notify('MAMUPH_INITIALIZED');
+Hook::instance()->notify('MAMUPH_INITIALIZED');
 
 
 /**

@@ -27,7 +27,7 @@ A PHP framework designed for develop console applications
         
 #### 2.3 Using GIT
 
-        git clone --recursive mamuph/base [project dir]
+        git clone --recursive https://github.com/Mamuph/base.git [project dir]
         
 
 

@@ -1,6 +1,4 @@
 <?php
-// It is required for unix signaling
-declare(ticks = 1);
 
 
 /**
@@ -161,12 +159,10 @@ class TestsSystemHook extends PHPUnit_Framework_TestCase
             // Send alarm signal like a Pro
             pcntl_alarm(1);
 
-            $stop_time = time() + 3;
-
             // Non-blocking version of the sleep function
             // I do this because sleep has an unexpected behaviour with HHVM.
             // I feel that VW engineers cheating the emissions tests.
-            while (time() < $stop_time) {}
+            Apprunner::sleep(3);
 
             $this->assertTrue($alarm_status);
         }

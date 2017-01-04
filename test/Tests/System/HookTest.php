@@ -161,9 +161,12 @@ class TestsSystemHook extends PHPUnit_Framework_TestCase
             // Send alarm signal like a Pro
             pcntl_alarm(1);
 
-            // I know, this is dirty, It is non-absolute deterministic, however it should
-            // work at 99.8% of the cases.
-            sleep(2);
+            $stop_time = time() + 3;
+
+            // Non-blocking version of the sleep function
+            // I do this because sleep has an unexpected behaviour with HHVM.
+            // I feel that VW engineers cheating the emissions tests.
+            while (time() < $stop_time) {}
 
             $this->assertTrue($alarm_status);
         }

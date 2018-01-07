@@ -62,9 +62,9 @@ class TestsSystemHook extends PHPUnit_Framework_TestCase
 
 
         // Check if hooks are attached
-        $this->assertTrue(Hook::instance()->was_attached('MY_EVENT1'));
-        $this->assertTrue(Hook::instance()->was_attached('MY_EVENT2', $hookid));
-        $this->assertFalse(Hook::instance()->was_attached($hookid));
+        $this->assertTrue(Hook::instance()->wasAttached('MY_EVENT1'));
+        $this->assertTrue(Hook::instance()->wasAttached('MY_EVENT2', $hookid));
+        $this->assertFalse(Hook::instance()->wasAttached($hookid));
 
         // Notify
         Hook::instance()->notify('MY_EVENT1');
@@ -161,11 +161,12 @@ class TestsSystemHook extends PHPUnit_Framework_TestCase
 
             // Non-blocking version of the sleep function
             // I do this because sleep has an unexpected behaviour with HHVM.
-            // I feel that VW engineers cheating the emissions tests.
+            // I feel like a VW engineer cheating with the emissions tests.
             Apprunner::sleep(3);
 
-            $this->assertTrue($alarm_status);
         }
+
+        $this->assertTrue($alarm_status);
 
     }
 

@@ -10,7 +10,7 @@ class Controller_Main extends Controller
     /**
      * Entry point
      */
-    public function action_main()
+    public function actionMain()
     {
 
         // Add your controller entry code below this line

@@ -91,10 +91,10 @@ else
 }
 
 // Enable autoloader
-spl_autoload_register(array('Apprunner', 'auto_load'));
+spl_autoload_register(array('Apprunner', 'autoLoad'));
 
 // Load default internal App configuration
-Config::instance()->attach(new Config_FileReader(CONFIGPATH));
+Config::instance()->attach(new Config_File_Reader(CONFIGPATH));
 
 /**
  * Set current path

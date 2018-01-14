@@ -19,7 +19,6 @@
       "pcre"
     ],
     "functions"   : [],
-    "memory"      : ">24MB",
-    "php"         : "7.0^"
+    "memory"      : "24MB"
   }
 }

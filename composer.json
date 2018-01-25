@@ -2,6 +2,7 @@
   "name": "mamuph/base",
   "description": "PHP-CLI framework",
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "license": "BSD",
   "authors": [
     {

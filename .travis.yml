@@ -6,9 +6,8 @@ git:
     submodules: true
 
 php:
-  - '7.0'
   - '7.1'
-  - hhvm
+  - '7.2'
 
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules

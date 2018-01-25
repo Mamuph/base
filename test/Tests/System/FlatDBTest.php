@@ -1,7 +1,8 @@
 <?php
+use PHPUnit\Framework\TestCase;
 
 
-class TestSystemFlatDB extends PHPUnit_Framework_TestCase
+class TestSystemFlatDB extends TestCase
 {
 
     private static $resources = 'Resources{{DS}}FlatDBTest';

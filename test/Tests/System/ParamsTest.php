@@ -1,11 +1,11 @@
 <?php
-
+use PHPUnit\Framework\TestCase;
 
 
 /**
  * Main test group
  */
-class TestsSystemParams extends PHPUnit_Framework_TestCase
+class TestsSystemParams extends TestCase
 {
 
     private static $argv_val;

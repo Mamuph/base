@@ -1,11 +1,11 @@
 <?php
-
+use PHPUnit\Framework\TestCase;
 
 
 /**
  * Main test group
  */
-class TestsSystemFile extends PHPUnit_Framework_TestCase
+class TestsSystemFile extends TestCase
 {
 
     private static $resources = 'Resources{{DS}}FileTest';

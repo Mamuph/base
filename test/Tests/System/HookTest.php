@@ -1,10 +1,11 @@
 <?php
+use PHPUnit\Framework\TestCase;
 
 
 /**
  * Main test group
  */
-class TestsSystemHook extends PHPUnit_Framework_TestCase
+class TestsSystemHook extends TestCase
 {
 
 

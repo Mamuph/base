@@ -1,7 +1,8 @@
 <?php
+use PHPUnit\Framework\TestCase;
 
 
-class TestSystemArr extends PHPUnit_Framework_TestCase
+class TestSystemArr extends TestCase
 {
 
 

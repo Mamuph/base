@@ -15,10 +15,10 @@ class TestsSystemParams extends TestCase
     {
         global $argv;
 
+        self::$argv_val = $argv;
+
         // Delete arguments passes to phpunit
         unset($argv);
-
-        self::$argv_val = $argv;
     }
 
 

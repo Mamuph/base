@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/Mamuph/base.svg?branch=master)](https://travis-ci.org/Mamuph/base)
+[![Build Status](https://travis-ci.org/Mamuph/base.svg?branch=2.0)](https://travis-ci.org/Mamuph/base)
+[![Coverage Status](https://coveralls.io/repos/github/Mamuph/base/badge.svg?branch=2.0)](https://coveralls.io/github/Mamuph/base?branch=2.0)
 
 
 MAMUPH FRAMEWORK

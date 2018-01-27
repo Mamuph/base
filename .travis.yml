@@ -12,14 +12,14 @@ php:
 before_install:
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
-    - composer require phpunit/phpunit:^6.5 phar-io/manifest satooshi/php-coveralls:dev-master
+    - composer require satooshi/php-coveralls:dev-master
     - composer install --dev
     - mkdir ./test/logs
 
 install:
   - composer install
 
-script: ./src/Vendor/phpunit/phpunit/phpunit --coverage-clover ./test/logs/clover.xml --configuration test/phpunit.xml
+script: phpunit --coverage-clover ./test/logs/clover.xml --configuration test/phpunit.xml
 
 after_script:
   - php ./src/Vendor/satooshi/php-coveralls/bin/php-coveralls -v

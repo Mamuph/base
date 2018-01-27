@@ -19,7 +19,7 @@ before_install:
 install:
   - composer install
 
-script: phpunit --coverage-clover ./test/logs/clover.xml --configuration test/phpunit.xml
+script: phpunit --configuration ./test/phpunit.xml
 
 after_script:
   - php ./src/Vendor/satooshi/php-coveralls/bin/php-coveralls -v

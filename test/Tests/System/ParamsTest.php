@@ -11,25 +11,39 @@ class TestsSystemParams extends TestCase
     private static $argv_val;
 
 
+    /**
+     * Perform a copy of parameters passed to PHPUnit.
+     */
     public static function setUpBeforeClass()
     {
         global $argv;
 
         self::$argv_val = $argv;
-
-        // Delete arguments passes to phpunit
-        unset($argv);
     }
 
 
     /**
-     * Restore the argument values after each test
+     * Restore the argument values as soon that this test suit is finished.
+     */
+    public static function tearDownAfterClass()
+    {
+        global $argv;
+
+        $argv = self::$argv_val;
+    }
+
+
+    /**
+     * Delete phpunit arguments in order to avoid that Param tests
+     * are not polluted.
      */
     public function tearDown()
     {
         global $argv;
 
-        $argv = self::$argv_val;
+        // Delete arguments passes to phpunit
+        $argv    = [];
+        $argv[0] = __FILE__;
     }
 
 

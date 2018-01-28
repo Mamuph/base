@@ -3,7 +3,7 @@
   "description": "PHP-CLI framework",
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "authors": [
     {
       "name": "Juan Lago",

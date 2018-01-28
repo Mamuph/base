@@ -16,9 +16,9 @@ A PHP framework designed for develop console applications
 2. Installation
 ---------------
 
-#### 2.1 Using Caverman
+#### 2.1 Using Caveman
 
-        caverman new [project dir]
+        caveman new [project dir]
         
         
 #### 2.2 Using Composer

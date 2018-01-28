@@ -23,9 +23,17 @@ set_time_limit(0);
 
 
 /**
+ * Ignore user abort the script
+ *
+ * @link http://php.net/manual/en/function.ignore-user-abort.php
+ */
+ignore_user_abort(false);
+
+
+/**
  * Load default internal App configuration
  */
-Config::instance()->attach(new Config_FileReader(CONFIGPATH));
+Config::instance()->attach(new Config_File_Reader(CONFIGPATH));
 
 
 /**
@@ -36,7 +44,7 @@ Config::instance()->attach(new Config_FileReader(CONFIGPATH));
  * Feel free to comment this the following lines if you App do not use command parameters/arguments
  */
 Params::process(
-    Config::instance()->load('Params')->as_array()
+    Config::instance()->load('Params')->asArray()
 );
 
 
@@ -46,7 +54,7 @@ Params::process(
  * App version is obtained from Config/Version.php
  */
 define('VERSION', Version::get(
-    Config::instance()->load('Version')->as_array()
+    Config::instance()->load('Version')->asArray()
 ));
 
 
@@ -99,14 +107,16 @@ Apprunner::init();
  * Load Mamuph modules automatically from Config/Modules.php
  */
 Apprunner::modules(
-    Config::instance()->load('Modules')->as_array()
+    Config::instance()->load('Modules')->asArray()
 );
 
 
 /**
  * Load PSR-4 Components (Like for example those installed using composer)
  */
-if (File::exists(VENDORPATH . 'autoload.php', File::SCOPE_LOCAL)) Apprunner::includes(VENDORPATH . 'autoload.php');
+if (File::exists(VENDORPATH . 'autoload.php', File::SCOPE_LOCAL)) {
+    Apprunner::includes(VENDORPATH . 'autoload.php');
+}
 
 
 /**

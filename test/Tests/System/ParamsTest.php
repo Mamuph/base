@@ -1,16 +1,19 @@
 <?php
-
+use PHPUnit\Framework\TestCase;
 
 
 /**
  * Main test group
  */
-class TestsSystemParams extends PHPUnit_Framework_TestCase
+class TestsSystemParams extends TestCase
 {
 
     private static $argv_val;
 
 
+    /**
+     * Perform a copy of parameters passed to PHPUnit.
+     */
     public static function setUpBeforeClass()
     {
         global $argv;
@@ -20,9 +23,9 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
 
 
     /**
-     * Restore the argument values after each test
+     * Restore the argument values as soon that this test suit is finished.
      */
-    public function tearDown()
+    public static function tearDownAfterClass()
     {
         global $argv;
 
@@ -31,7 +34,21 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
 
 
     /**
-     * Test if single parameter is accepted
+     * Delete phpunit arguments in order to avoid that Param tests
+     * are not polluted.
+     */
+    public function tearDown()
+    {
+        global $argv;
+
+        // Delete arguments passes to phpunit
+        $argv    = [];
+        $argv[0] = __FILE__;
+    }
+
+
+    /**
+     * Test if single parameter is accepted.
      *
      * @group   mamuph.system.params
      */
@@ -69,7 +86,7 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
 
 
     /**
-     * Test if long parameters are accepted
+     * Test if long parameters are accepted.
      *
      * @group   mamuph.system.params
      */
@@ -107,7 +124,7 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
 
 
     /**
-     * Test if validation report is correct when a missing extra parameter is given
+     * Test if validation report is correct when a missing extra parameter is given.
      *
      * @group   mamuph.system.params
      */
@@ -140,7 +157,7 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
 
 
     /**
-     * Test parameters evaluation when values are passed
+     * Test parameters evaluation when values are passed.
      *
      * @group   mamuph.system.params
      */
@@ -189,7 +206,7 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
 
 
     /**
-     * Test if multiple free arguments are evaluated
+     * Test if multiple free arguments are evaluated.
      *
      * @group   mamuph.system.params
      */
@@ -224,6 +241,11 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * Test set params.
+     *
+     * @group   mamuph.system.params
+     */
     public function test_set_params()
     {
 
@@ -268,6 +290,89 @@ class TestsSystemParams extends PHPUnit_Framework_TestCase
         $this->assertEquals(Params::get('alpha'), 'one'  );
         $this->assertEquals(Params::get('beta') , 'two'  );
         $this->assertEquals(Params::get('gamma'), 'three');
+
+    }
+
+
+    /**
+     * Test set params.
+     *
+     * @group   mamuph.system.params
+     */
+    public function test_param_types()
+    {
+
+        // Set arguments
+        global $argv;
+
+        // Mock arguments
+        $argv[1] = '--alnum=13HelloWorld';
+        $argv[2] = '--alpha=HelloWorld';
+        $argv[3] = '-int=3123';
+        $argv[3] = '--num=3.141592';
+        $argv[4] = '--list=Two';
+        $argv[5] = '--any=Whatever13_22';
+
+        // Process arguments
+        Params::process(
+          [
+            'alnum' =>
+              [
+                'long_arg'     => 'alnum',
+                'accept_value' => 'alnum',
+                'optional'     => false,
+              ],
+            'alpha' =>
+              [
+                'long_arg'     => 'alpha',
+                'accept_value' => 'alpha',
+                'optional'     => false,
+              ],
+            'int'   =>
+              [
+                'short_arg'    => 'int',
+                'accept_value' => 'int',
+                'optional'     => true
+              ],
+            'num'   =>
+              [
+                'long_arg'     => 'num',
+                'accept_value' => 'num',
+                'optional'     => true
+              ],
+            'list'  =>
+              [
+                'long_arg'     => 'list',
+                'accept_value' => 'list',
+                'list'         => ['One', 'Two', 'Three'],
+                'optional'     => false,
+              ],
+            'any'   =>
+              [
+                'long_arg'     => 'any',
+                'accept_value' => 'any',
+                'optional'     => false,
+              ],
+          ]
+        );
+
+        $this->assertEmpty(Params::validate());
+
+        // Test wrong types
+        Params::set('alnum', '12Test_Invalid');
+        $this->assertArrayHasKey('alnum', Params::validate());
+
+        Params::set('alpha', '13.141592');
+        $this->assertArrayHasKey('alpha', Params::validate());
+
+        Params::set('int', '13.141592');
+        $this->assertArrayHasKey('alpha', Params::validate());
+
+        Params::set('num', '13Test');
+        $this->assertArrayHasKey('num', Params::validate());
+
+        Params::set('list', '13Test');
+        $this->assertArrayHasKey('list', Params::validate());
 
     }
 

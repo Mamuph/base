@@ -1,7 +1,8 @@
 <?php
+use PHPUnit\Framework\TestCase;
 
 
-class TestSystemArr extends PHPUnit_Framework_TestCase
+class TestSystemArr extends TestCase
 {
 
 
@@ -12,8 +13,8 @@ class TestSystemArr extends PHPUnit_Framework_TestCase
      */
     public function test_is_associative()
     {
-        $this->assertTrue(Arr::is_assoc(array('foo' => 'bar')));
-        $this->assertFalse(Arr::is_assoc(array('foo', 'bar')));
+        $this->assertTrue(Arr::isAssoc(array('foo' => 'bar')));
+        $this->assertFalse(Arr::isAssoc(array('foo', 'bar')));
     }
 
 
@@ -24,8 +25,8 @@ class TestSystemArr extends PHPUnit_Framework_TestCase
      */
     public function test_is_array()
     {
-        $this->assertTrue(Arr::is_array(array('foo')));
-        $this->assertFalse(Arr::is_array(new stdClass()));
+        $this->assertTrue(Arr::isArray(array('foo')));
+        $this->assertFalse(Arr::isArray(new stdClass()));
     }
 
 
@@ -94,10 +95,10 @@ class TestSystemArr extends PHPUnit_Framework_TestCase
         $this->assertArraySubset(['foobar1', 'foobar2'], Arr::path($data, 'level1.*.common'));
 
 
-        Arr::set_path($data, 'level2-level2c', true, '-');
+        Arr::setPath($data, 'level2-level2c', true, '-');
         $this->assertTrue(Arr::path($data, 'level2.level2c', false));
 
-        Arr::set_path($data, 'level1.level1a', 'foo');
+        Arr::setPath($data, 'level1.level1a', 'foo');
         $this->assertEquals('foo', Arr::path($data, 'level1.level1a'));
 
     }

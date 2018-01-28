@@ -3,7 +3,12 @@
 <phpunit bootstrap="index.php" colors="true">
     <testsuites>
         <testsuite name="Mamuph Test Suites">
-            <directory>Tests/System/</directory>
+            <directory suffix=".php">Tests/System/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../src/System/</directory>
+        </whitelist>
+    </filter>
 </phpunit>

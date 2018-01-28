@@ -1,11 +1,11 @@
 <?php
-
+use PHPUnit\Framework\TestCase;
 
 
 /**
  * Main test group
  */
-class TestsSystemFile extends PHPUnit_Framework_TestCase
+class TestsSystemFile extends TestCase
 {
 
     private static $resources = 'Resources{{DS}}FileTest';
@@ -17,7 +17,6 @@ class TestsSystemFile extends PHPUnit_Framework_TestCase
         self::$resources = TESTPATH . self::$resources;
         self::$resources = str_replace('{{DS}}', DS, self::$resources);
     }
-
 
 
     /**
@@ -77,13 +76,12 @@ class TestsSystemFile extends PHPUnit_Framework_TestCase
 
         // Remove temporal folder
         $dest_files = File::ls($temp, true, File::EXCLUDE_BLOCK | File::LIST_RECURSIVE);
-        $this->assertTrue(File::deltree($temp, true));
+        $this->assertTrue(File::delTree($temp, true));
 
         foreach ($dest_files as $dest_file)
             $this->assertFalse(file_exists($dest_file));
 
     }
-
 
 
     /**
@@ -97,8 +95,6 @@ class TestsSystemFile extends PHPUnit_Framework_TestCase
         $home_dir = File::home();
         $this->assertTrue(file_exists($home_dir) && is_dir($home_dir));
     }
-
-
 
 
 }

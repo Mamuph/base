@@ -4,11 +4,6 @@
  */
 
 /**
- * App version
- */
-define('VERSION', 1.0);
-
-/**
  * Set the default time zone.
  *
  * @link http://www.php.net/manual/timezones

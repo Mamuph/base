@@ -1,0 +1,24 @@
+{
+  "name"        : "Mamuph",
+  "paths"       :
+  {
+    "build"     : "build/",
+    "src"       : "src/",
+    "test"      : "test/"
+  },
+  "build"       :
+  {
+    "name"        : "app_#{{VERSION.MAJOR}}.#{{VERSION.MINOR}}.phar"
+  },
+  "dependencies":
+  {
+    "extensions"  : [
+      "mbstring",
+      "ctype"   ,
+      "pcntl",
+      "pcre"
+    ],
+    "functions"   : [],
+    "memory"      : "24MB"
+  }
+}

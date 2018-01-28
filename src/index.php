@@ -120,7 +120,7 @@ else
 /**
  * Enable autoloader
  */
-spl_autoload_register(array('Apprunner', 'auto_load'));
+spl_autoload_register(array('Apprunner', 'autoLoad'));
 
 
 /**

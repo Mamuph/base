@@ -124,12 +124,6 @@ spl_autoload_register(array('Apprunner', 'autoLoad'));
 
 
 /**
- * Initialize hooks
- */
-Hook::instance();
-
-
-/**
  * Set current path
  */
 chdir(getcwd());
